@@ -385,13 +385,25 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
 .review-scroll-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none; padding-bottom:16px; }
 .review-scroll-wrap::-webkit-scrollbar { display:none; }
 .review-track { display:flex; gap:16px; width:max-content; }
-.review-card { width:280px; flex-shrink:0; background:rgba(255,255,255,0.92); border-radius:16px; padding:24px 20px; border:1px solid rgba(255,255,255,0.8); box-shadow:0 4px 20px rgba(0,0,0,0.15); }
+.review-card { width:280px; flex-shrink:0; background:rgba(255,255,255,0.92); border-radius:16px; padding:24px 20px; border:1px solid rgba(255,255,255,0.8); box-shadow:0 4px 20px rgba(0,0,0,0.15); text-align:left; }
 .review-stars { color:#C4A882; font-size:14px; margin-bottom:10px; letter-spacing:2px; }
 .review-text { font-size:13px; line-height:1.8; color:#2C2C2C; font-weight:400; word-break:keep-all; }
 .space-photo-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
 .space-photo-item img { width:100%; height:auto; object-fit:contain; border-radius:8px; display:block; cursor:pointer; transition:opacity 0.2s; }
 .space-photo-item img:hover { opacity:0.85; }
 @media(max-width:768px){ .space-photo-grid { grid-template-columns:repeat(2,1fr); } }
+
+/* ── 시설 영상 섹션 (크기 조절은 여기서) ── */
+.story-space-video-section { padding:0 24px 100px; background:#FAF8F5; }
+.space-video-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:24px; max-width:900px; margin:0 auto; }
+.space-video-label { font-family:'Cormorant Garamond',serif; font-size:16px; letter-spacing:3px; color:#C4A882; margin-bottom:12px; }
+.space-video { width:100%; max-height:60vh; object-fit:cover; border-radius:8px; display:block; background:#000; }
+@media(max-width:768px){
+  .story-space-video-section { padding:0 20px 64px; }
+  .space-video-grid { grid-template-columns:1fr; }
+  .space-video { max-height:50vh; }
+}
+
 /* 사진 확대 모달 */
 #photo-modal { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:9999; align-items:center; justify-content:center; }
 #photo-modal.open { display:flex; }
@@ -757,15 +769,19 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
       </div>
     </div>
   </section>
-  
-      <!-- 공간 영상 -->
-      <div class="story-fade-in" style="margin-top:48px;">
-        <p style="font-family:'Cormorant Garamond',serif; font-size:16px; letter-spacing:3px; color:#C4A882; margin-bottom:12px;">서천점</p>
-        <video src="아르더짐공간1.mp4" autoplay muted loop playsinline preload="none" style="width:100%; border-radius:8px; display:block;" preload="none"></video>
-      </div>
-      <div class="story-fade-in story-d1" style="margin-top:24px;">
-        <p style="font-family:'Cormorant Garamond',serif; font-size:16px; letter-spacing:3px; color:#C4A882; margin-bottom:12px;">망포점</p>
-        <video src="아르더짐공간2.mp4" autoplay muted loop playsinline preload="none" style="width:100%; border-radius:8px; display:block;" preload="none"></video>
+
+  <!-- ===== 시설 영상 (크기: 위쪽 .space-video CSS에서 조절) ===== -->
+  <section class="story-space-video-section">
+    <div class="story-section-wrapper">
+      <div class="space-video-grid">
+        <div class="story-fade-in">
+          <p class="space-video-label">서천점</p>
+          <video class="space-video" src="아르더짐공간1.mp4" autoplay muted loop playsinline preload="none"></video>
+        </div>
+        <div class="story-fade-in story-d1">
+          <p class="space-video-label">망포점</p>
+          <video class="space-video" src="아르더짐공간2.mp4" autoplay muted loop playsinline preload="none"></video>
+        </div>
       </div>
     </div>
   </section>
@@ -964,9 +980,6 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
         </div>
       </div>
     </div>
-      <div class="story-fade-in story-d2 story-consistency-photo-col">
-      </div>
-    </div>
   </section>
 
   <footer>ARDOR GYM &nbsp;·&nbsp; 친절하고 다정한 이웃</footer>
@@ -1137,7 +1150,7 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
         </div>
 
       </div>
-    </div>    </div>
+    </div>
 
     <!-- 더 보기 버튼 -->
     <div style="text-align:center; margin-top:48px; margin-bottom:32px;">
@@ -1401,8 +1414,8 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
       <button class="slide-dot" onclick="goSlide('1on1',12)"></button>
     </div>
     <div class="program-media-grid">
-      <div class="program-media-item"><video src="1대1영상1.mp4" autoplay muted loop playsinline preload="none" preload="none"></video></div>
-      <div class="program-media-item"><video src="1대1영상2.mp4" autoplay muted loop playsinline preload="none" preload="none"></video></div>
+      <div class="program-media-item"><video src="1대1영상1.mp4" autoplay muted loop playsinline preload="none"></video></div>
+      <div class="program-media-item"><video src="1대1영상2.mp4" autoplay muted loop playsinline preload="none"></video></div>
     </div>
 
     <!-- 나맞트 섹션 -->
@@ -1672,10 +1685,10 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
       <p class="case-block-desc">한 분만 다이어트할 때 식단 눈치 보이셨나요?<br>함께하면 서로 응원하며 즐겁게!</p>
       <div class="slideshow" id="slideshow-couple">
         <div class="slideshow-track" id="track-couple">
-          <div class="slide"><video src="2대1수업1.mp4" autoplay muted loop playsinline preload="none" class="slide-video" preload="none"></video></div>
-          <div class="slide"><video src="2대1수업5.mp4" autoplay muted loop playsinline preload="none" class="slide-video" preload="none"></video></div>
-          <div class="slide"><video src="2대1수업6.mp4" autoplay muted loop playsinline preload="none" class="slide-video" preload="none"></video></div>
-          <div class="slide"><video src="매칭핏11.mp4" autoplay muted loop playsinline preload="none" class="slide-video" preload="none"></video></div>
+          <div class="slide"><video src="2대1수업1.mp4" autoplay muted loop playsinline preload="none" class="slide-video"></video></div>
+          <div class="slide"><video src="2대1수업5.mp4" autoplay muted loop playsinline preload="none" class="slide-video"></video></div>
+          <div class="slide"><video src="2대1수업6.mp4" autoplay muted loop playsinline preload="none" class="slide-video"></video></div>
+          <div class="slide"><video src="매칭핏11.mp4" autoplay muted loop playsinline preload="none" class="slide-video"></video></div>
         </div>
         <button class="slide-btn prev" onclick="moveSlide('couple',-1)">&#8249;</button>
         <button class="slide-btn next" onclick="moveSlide('couple',1)">&#8250;</button>
@@ -1705,8 +1718,8 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
       <p class="case-block-desc">힘든 운동도 같이면 웃으면서!<br>수업 내내 즐거운 분위기가 이어져요.</p>
       <div class="slideshow" id="slideshow-friends">
         <div class="slideshow-track" id="track-friends">
-          <div class="slide"><video src="매칭핏10.mp4" autoplay muted loop playsinline preload="none" class="slide-video" preload="none"></video></div>
-          <div class="slide"><video src="매칭핏12.mp4" autoplay muted loop playsinline preload="none" class="slide-video" preload="none"></video></div>
+          <div class="slide"><video src="매칭핏10.mp4" autoplay muted loop playsinline preload="none" class="slide-video"></video></div>
+          <div class="slide"><video src="매칭핏12.mp4" autoplay muted loop playsinline preload="none" class="slide-video"></video></div>
         </div>
         <button class="slide-btn prev" onclick="moveSlide('friends',-1)">&#8249;</button>
         <button class="slide-btn next" onclick="moveSlide('friends',1)">&#8250;</button>
@@ -1866,8 +1879,8 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
     <!-- 미디어 섹션 -->
     <div class="price-section-title" style="margin-top:56px;">📸 매칭핏 현장</div>
     <div class="program-media-grid">
-      <div class="program-media-item"><video src="매칭핏1.mp4" autoplay muted loop playsinline preload="none" preload="none"></video></div>
-      <div class="program-media-item"><video src="매칭핏2.mp4" autoplay muted loop playsinline preload="none" preload="none"></video></div>
+      <div class="program-media-item"><video src="매칭핏1.mp4" autoplay muted loop playsinline preload="none"></video></div>
+      <div class="program-media-item"><video src="매칭핏2.mp4" autoplay muted loop playsinline preload="none"></video></div>
     </div>
 
     <!-- 마무리 문구 -->
@@ -2038,9 +2051,9 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
 
     <!-- 영상 -->
     <div class="program-media-grid">
-      <div class="program-media-item"><video src="원데이9.mp4" autoplay muted loop playsinline preload="none" preload="none"></video></div>
-      <div class="program-media-item"><video src="원데이13.mp4" autoplay muted loop playsinline preload="none" preload="none"></video></div>
-      <div class="program-media-item"><video src="원데이14.mp4" autoplay muted loop playsinline preload="none" preload="none"></video></div>
+      <div class="program-media-item"><video src="원데이9.mp4" autoplay muted loop playsinline preload="none"></video></div>
+      <div class="program-media-item"><video src="원데이13.mp4" autoplay muted loop playsinline preload="none"></video></div>
+      <div class="program-media-item"><video src="원데이14.mp4" autoplay muted loop playsinline preload="none"></video></div>
     </div>
 
   </div>
@@ -2055,12 +2068,12 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
     <h2 class="content-page-title">PT 가격표</h2>
     <div class="content-page-divider"></div>
 
-    <!-- 가격표 이미지 -->
+    <!-- 가격표 이미지 (한글 파일명 인식 실패 시 fixImg가 자동 재시도) -->
     <div class="price-section-title">1:1 개인 PT</div>
-    <img src="1대1가격표.jpg" alt="1:1 PT 가격표" style="width:100%; display:block; border-radius:8px; margin-bottom:32px;">
+    <img src="1대1가격표.jpg" data-name="1대1가격표.jpg" onerror="fixImg(this)" alt="1:1 PT 가격표" style="width:100%; display:block; border-radius:8px; margin-bottom:32px;">
 
     <div class="price-section-title">2:1 그룹 PT</div>
-    <img src="2대1가격표.jpg" alt="2:1 PT 가격표" style="width:100%; display:block; border-radius:8px;">
+    <img src="2대1가격표.jpg" data-name="2대1가격표.jpg" onerror="fixImg(this)" alt="2:1 PT 가격표" style="width:100%; display:block; border-radius:8px;">
 
   </div>
   <footer>ARDOR GYM &nbsp;·&nbsp; 친절하고 다정한 이웃</footer>
@@ -2226,9 +2239,9 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
 
     <div class="branch-content" id="seocheon-video">
       <div class="video-grid">
-        <div style="flex:1"><video src="회원서천1.mp4" autoplay muted loop playsinline preload="none" style="width:100%; border-radius:4px; display:block;" preload="none"></video></div>
-        <div style="flex:1"><video src="회원서천2.mp4" autoplay muted loop playsinline preload="none" style="width:100%; border-radius:4px; display:block;" preload="none"></video></div>
-        <div style="flex:1"><video src="회원서천3.mp4" autoplay muted loop playsinline preload="none" style="width:100%; border-radius:4px; display:block;" preload="none"></video></div>
+        <div style="flex:1"><video src="회원서천1.mp4" autoplay muted loop playsinline preload="none" style="width:100%; border-radius:4px; display:block;"></video></div>
+        <div style="flex:1"><video src="회원서천2.mp4" autoplay muted loop playsinline preload="none" style="width:100%; border-radius:4px; display:block;"></video></div>
+        <div style="flex:1"><video src="회원서천3.mp4" autoplay muted loop playsinline preload="none" style="width:100%; border-radius:4px; display:block;"></video></div>
       </div>
     </div>
 
@@ -2413,9 +2426,9 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
 
     <div class="branch-content" id="mangpo-video">
       <div class="video-grid">
-        <div style="flex:1"><video src="회원망포2.mp4" autoplay muted loop playsinline preload="none" style="width:100%; border-radius:4px; display:block;" preload="none"></video></div>
-        <div style="flex:1"><video src="회원망포3.mp4" autoplay muted loop playsinline preload="none" style="width:100%; border-radius:4px; display:block;" preload="none"></video></div>
-        <div style="flex:1"><video src="회원망포4.mp4" autoplay muted loop playsinline preload="none" style="width:100%; border-radius:4px; display:block;" preload="none"></video></div>
+        <div style="flex:1"><video src="회원망포2.mp4" autoplay muted loop playsinline preload="none" style="width:100%; border-radius:4px; display:block;"></video></div>
+        <div style="flex:1"><video src="회원망포3.mp4" autoplay muted loop playsinline preload="none" style="width:100%; border-radius:4px; display:block;"></video></div>
+        <div style="flex:1"><video src="회원망포4.mp4" autoplay muted loop playsinline preload="none" style="width:100%; border-radius:4px; display:block;"></video></div>
       </div>
     </div>
 
@@ -2573,6 +2586,17 @@ function switchTab(branch, tab, btn) {
   document.getElementById(branch+'-'+tab).classList.add('active');
 }
 
+// 한글 파일명 이미지 로드 실패 시 유니코드 정규화(NFD → NFC)로 자동 재시도
+function fixImg(img) {
+  const name = img.getAttribute('data-name');
+  if (!name) return;
+  const forms = ['NFD', 'NFC'];
+  const t = parseInt(img.dataset.try || '0', 10);
+  if (t >= forms.length) return;
+  img.dataset.try = String(t + 1);
+  img.src = name.normalize(forms[t]);
+}
+
 // 패럴랙스 효과
 function applyParallax() {
   document.querySelectorAll('.section-bg-img').forEach(img => {
@@ -2587,7 +2611,7 @@ function applyParallax() {
 window.addEventListener('scroll', applyParallax, { passive: true });
 window.addEventListener('load', applyParallax);
 
-// 홈 스토리 섹션 fade-in observer
+// 홈 스토리 섹션 fade-in observer (구조가 틀어져도 후기가 숨지 않도록 전체 대상)
 const storyObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -2595,8 +2619,8 @@ const storyObserver = new IntersectionObserver((entries) => {
       storyObserver.unobserve(entry.target);
     }
   });
-}, { threshold: 0.15 });
-document.querySelectorAll('#page-home .story-fade-in').forEach(el => storyObserver.observe(el));
+}, { threshold: 0.05 });
+document.querySelectorAll('.story-fade-in').forEach(el => storyObserver.observe(el));
 
 // 홈 스토리 hero parallax
 window.addEventListener('scroll', () => {
