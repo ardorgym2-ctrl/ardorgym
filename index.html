@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="naver-site-verification" content="b0edbebb8fd0be730aad152f5a6a66b415c58969" />
+<meta name="naver-site-verification" content="0c158e86aa96dbc42c09376bc377e7e0278e4061" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="format-detection" content="telephone=no">
@@ -304,7 +305,7 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
   .tp-overlay { bottom:14px; left:14px; right:14px; }
   .tp-text { font-size:14px; }
 }
-.story-hero-section{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;padding:40px 20px;background:#FAF8F5}
+.story-hero-section{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;padding:160px 20px 0;background:#FAF8F5}
 .story-hero-bg-circle{position:absolute;border-radius:50%;opacity:.15;pointer-events:none}
 .story-hero-bg-1{width:600px;height:600px;top:-200px;right:-200px;background:radial-gradient(circle,#C4A882 0%,transparent 70%)}
 .story-hero-bg-2{width:400px;height:400px;bottom:-100px;left:-100px;background:radial-gradient(circle,#D4B896 0%,transparent 70%)}
@@ -321,6 +322,8 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
 .story-section-title{font-size:clamp(22px,4.5vw,36px);font-weight:700;color:#2C2C2C;line-height:1.5;word-break:keep-all}
 .story-section-divider{width:48px;height:2px;background:#C4A882;margin:24px auto 0}
 .story-intro-section{padding:120px 24px;background:linear-gradient(180deg,#FAF8F5 0%,#EDE7DF 100%)}
+.story-intro-line{width:48px;height:1px;background:#C4A882;margin:0 auto 40px}
+.story-intro-section.home-intro{padding-top:48px;padding-bottom:100px}
 .story-intro-quote{font-size:clamp(20px,4vw,32px);font-weight:300;line-height:1.8;text-align:center;max-width:700px;margin:0 auto;color:#2C2C2C}
 .story-intro-quote em{font-style:normal;color:#C4A882;font-weight:500}
 .story-values-section{padding:120px 24px;background:#FAF8F5}
@@ -409,6 +412,42 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
 #photo-modal.open { display:flex; }
 #photo-modal img { max-width:90vw; max-height:90vh; object-fit:contain; border-radius:8px; }
 #photo-modal-close { position:absolute; top:20px; right:20px; background:none; border:none; color:#fff; font-size:32px; cursor:pointer; line-height:1; }
+/* ── PT 선택 카드 ── */
+.pt-choose{background:#FAF8F5;padding:64px 24px 24px;text-align:center}
+.pt-choose-label{font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:4px;color:#C4A882;margin-bottom:12px}
+.pt-choose-title{font-size:clamp(22px,4vw,32px);font-weight:700;color:#2C2C2C;line-height:1.4;word-break:keep-all}
+.pt-choose-divider{width:48px;height:2px;background:#C4A882;margin:20px auto 36px}
+.pt-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;max-width:880px;margin:0 auto}
+.pt-card{cursor:pointer;position:relative;display:flex;flex-direction:column;justify-content:flex-end;min-height:360px;padding:28px;border-radius:16px;overflow:hidden;text-decoration:none;color:#fff;text-align:left;isolation:isolate;box-shadow:0 8px 28px rgba(60,35,15,.18);transition:transform .3s ease,box-shadow .3s ease}
+.pt-card-bg{position:absolute;inset:0;z-index:-2;background-size:cover;background-position:center;transition:transform .6s ease}
+.pt-card::before{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(30,15,5,.88) 0%,rgba(30,15,5,.45) 55%,rgba(30,15,5,.15) 100%)}
+.pt-card:hover{transform:translateY(-4px);box-shadow:0 14px 36px rgba(60,35,15,.26)}
+.pt-card:hover .pt-card-bg{transform:scale(1.06)}
+.pt-card:focus-visible{outline:3px solid #C4A882;outline-offset:3px}
+.pt-card-badge{align-self:flex-start;margin-bottom:auto;padding:6px 14px;border-radius:100px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);font-size:12px;font-weight:500;letter-spacing:.5px;backdrop-filter:blur(4px)}
+.pt-card-eng{font-family:'Cormorant Garamond',serif;font-size:15px;letter-spacing:4px;color:#D4B896;margin-top:24px}
+.pt-card-name{font-size:clamp(26px,3.4vw,34px);font-weight:700;line-height:1.2;margin:4px 0 10px}
+.pt-card-desc{font-size:15px;font-weight:300;line-height:1.7;color:rgba(255,255,255,.88);word-break:keep-all;margin-bottom:22px}
+/* 플로팅 체험예약(갈색 채움)과 겹치지 않도록 카드 버튼은 흰 테두리형 */
+.pt-card-go{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-radius:8px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.6);color:#fff;font-size:14px;font-weight:700;letter-spacing:1px;transition:background .25s,color .25s}
+.pt-card-go span{transition:transform .25s ease}
+.pt-card:hover:not(:has(.pt-card-sub:hover)) .pt-card-go{background:#fff;color:#6e4828}
+.pt-card:hover:not(:has(.pt-card-sub:hover)) .pt-card-go span{transform:translateX(6px)}
+@media(max-width:768px){
+  .pt-choose{padding:48px 20px 16px}
+  .pt-cards{grid-template-columns:1fr;gap:14px}
+  .pt-card{min-height:280px;padding:22px}
+}
+.pt-card-sub-note{margin-top:18px;padding-top:16px;border-top:1px solid rgba(255,255,255,.22);font-size:13px;font-weight:300;line-height:1.6;color:rgba(255,255,255,.8);word-break:keep-all}
+.pt-card-sub{display:flex;align-items:center;justify-content:space-between;margin-top:8px;padding:14px 18px;border-radius:8px;background:rgba(212,184,150,.14);border:1px solid rgba(212,184,150,.75);color:#E8D3B5;text-decoration:none;font-size:14px;font-weight:700;letter-spacing:1px;transition:background .25s,color .25s}
+.pt-card-sub span{transition:transform .25s ease}
+.pt-card-sub:hover{background:#D4B896;color:#3e2a1a}
+.pt-card-sub:hover span{transform:translateX(6px)}
+.pt-card-sub:focus-visible{outline:2px solid #fff;outline-offset:2px}
+@media(prefers-reduced-motion:reduce){.pt-card,.pt-card-bg,.pt-card-go span{transition:none}}
+.pt-bg-1on1{background:radial-gradient(circle at 70% 25%,#c9a27a 0%,transparent 45%),linear-gradient(135deg,#8b5c38 0%,#4a2e18 100%)}
+.pt-bg-2on1{background:radial-gradient(circle at 30% 30%,#d4b896 0%,transparent 45%),linear-gradient(135deg,#a07850 0%,#3e2a1a 100%)}
+
 .banner-scroll-wrap { width:100%; overflow:hidden; background:#FAF8F5; padding:24px 0; }
 .banner-scroll-track { display:flex; gap:12px; width:max-content; animation:bannerScroll 40s linear infinite; }
 .banner-scroll-track:hover { animation-play-state:paused; }
@@ -434,9 +473,11 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
 .case-block-desc { font-size:14px; line-height:1.9; color:var(--color-soft); font-weight:300; margin-bottom:16px; word-break:keep-all; }
 .story-closing-logo{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;letter-spacing:4px;color:#2C2C2C;margin-top:56px}
 @media(max-width:768px){
-  .story-hero-section{padding:80px 20px 60px}
+  .story-hero-section{padding:120px 20px 0}
   .story-intro-section,.story-values-section,.story-space-section,.story-pro-section,.story-consistency-section,.story-give-section,.story-closing-section,.story-summary-section{padding:80px 20px}
   .story-section-wrapper{padding:0 20px}
+  .story-intro-section.home-intro{padding:36px 20px 80px}
+  .story-intro-line{margin-bottom:32px}
 }
 @media (max-width:768px) {
 
@@ -596,26 +637,51 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
         긍정적인 에너지를 나누고, 꾸준함을 함께 만드는 곳
       </p>
     </div>
-    <div class="story-fade-in story-d8" style="margin-top:40px;">
-      <a href="https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=%EC%95%84%EB%A5%B4%EB%8D%94%EC%A7%90&ackey=mqpiiyqb" target="_blank" style="
-        display:inline-block;
-        padding:17px 48px;
-        background:#8b5c38;
-        color:#f8f4ec;
-        font-family:'Noto Sans KR',sans-serif;
-        font-size:14px;
-        letter-spacing:2px;
-        font-weight:700;
-        text-decoration:none;
-        transition:background 0.25s,transform 0.2s;
-        border-radius:2px;
-      " onmouseover="this.style.background='#6e4828';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#8b5c38';this.style.transform='translateY(0)'">
-        가까운 지점 찾기
-      </a>
+  </section>
+
+  <!-- ===== INTRO ===== -->
+  <section class="story-intro-section home-intro">
+    <div class="story-section-wrapper">
+      <div class="story-fade-in">
+        <div class="story-intro-line"></div>
+        <p class="story-intro-quote">
+          아르더짐은 <em>'친절함'</em>으로 마음의 벽을 낮추고,<br>
+          <em>'전문성'</em>으로 몸의 변화를 확실히 만들어드립니다.
+        </p>
+      </div>
     </div>
-    <div class="story-scroll-indicator">
-      <span>Story</span>
-      <div class="story-scroll-line"></div>
+  </section>
+
+  <!-- ===== PT 선택 카드 ===== -->
+  <section class="pt-choose">
+    <p class="pt-choose-label">Choose Your PT</p>
+    <h2 class="pt-choose-title">어떤 PT가 나에게 맞을까요?</h2>
+    <div class="pt-choose-divider"></div>
+    <div class="pt-cards">
+      <div class="pt-card" role="link" tabindex="0" onclick="showPage('program-1on1')" onkeydown="if(event.key==='Enter')showPage('program-1on1')">
+        <div class="pt-card-bg pt-bg-1on1"></div>
+        <span class="pt-card-badge">NASM 기반 정밀 평가</span>
+        <p class="pt-card-eng">PERSONAL</p>
+        <p class="pt-card-name">1:1 PT</p>
+        <p class="pt-card-desc">체형·움직임을 정밀하게 평가한 뒤,<br>나만을 위한 맞춤 프로그램으로 시작해요.</p>
+        <div class="pt-card-go">1:1 PT 알아보기 <span>→</span></div>
+        <p class="pt-card-sub-note">가족끼리 횟수를 나눠 쓰는 경제적인 요금제</p>
+        <a href="#" class="pt-card-sub" onclick="event.stopPropagation();showPage('program-family');return false;">
+          가족결합 PT 알아보기 <span>→</span>
+        </a>
+      </div>
+      <div class="pt-card" role="link" tabindex="0" onclick="showPage('program-group')" onkeydown="if(event.key==='Enter')showPage('program-group')">
+        <div class="pt-card-bg pt-bg-2on1"></div>
+        <span class="pt-card-badge">지인·가족·커플 모두 가능</span>
+        <p class="pt-card-eng">PARTNER</p>
+        <p class="pt-card-name">2:1 PT</p>
+        <p class="pt-card-desc">지인과 함께하는 PT,<br>가격 부담은 줄이고 전문적 관리는 그대로.</p>
+        <div class="pt-card-go">2:1 PT 알아보기 <span>→</span></div>
+        <p class="pt-card-sub-note">함께할 사람이 없다면, 잘 맞는 파트너를 매칭해 드려요</p>
+        <a href="#" class="pt-card-sub" onclick="event.stopPropagation();showPage('program-matching');return false;">
+          2:1 매칭핏 알아보기 <span>→</span>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -671,18 +737,6 @@ footer { position:relative; z-index:1; text-align:center; padding:24px 16px; fon
       <div class="banner-scroll-item"><img loading="lazy" src="웰니스3.JPG" alt="아르더짐"></div>
     </div>
   </div>
-
-  <!-- ===== INTRO ===== -->
-  <section class="story-intro-section">
-    <div class="story-section-wrapper">
-      <div class="story-fade-in">
-        <p class="story-intro-quote">
-          아르더짐은 <em>'친절함'</em>으로 마음의 벽을 낮추고,<br>
-          <em>'전문성'</em>으로 몸의 변화를 확실히 만들어드립니다.
-        </p>
-      </div>
-    </div>
-  </section>
 
   <!-- ===== 4 VALUES ===== -->
   <section class="story-values-section">
